@@ -9,3 +9,13 @@
   }
   @return $str;
 }
+
+@function condition($if, $val, $default){
+  $result: $if;
+
+  @if $if == $val {
+    $result: $default;
+  }
+
+  @return $result
+}

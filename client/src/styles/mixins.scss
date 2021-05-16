@@ -4,7 +4,7 @@ $tablet: $md + px;
 $mobile: $sm + px;
 
 
-@mixin font($ff: $raleway, $fw: normal, $fz: 16, $lh: 1, $color: none){
+@mixin font($ff: $FFamily, $fw: $FReg, $fz: $FZ, $lh: 1, $color: none){
   $h: $lh;
   @each $font-size in $fz{
     @if $h == $lh {
@@ -103,4 +103,22 @@ $mobile: $sm + px;
     bottom: -60px;
     transform: rotate(180deg);
   }
+}
+
+@mixin flex($align: skip, $justify: skip, $dir: skip){
+  // init, skip
+  display: flex;
+
+  @if $align != skip{
+    align-items: condition($align, init, center);
+  }
+
+  @if $justify != skip{
+    justify-content: condition($justify, init, space-between);
+  }
+
+  @if $dir != skip{
+    flex-direction: condition($dir, init, row);
+  }
+
 }

@@ -1,0 +1,38 @@
+.select-file {
+  @include flex();
+  height: 100%;
+  margin: auto;
+
+  &-btn {
+    @include flex();
+    line-height: 1;
+    margin: auto;
+    background: $color-red;
+    border-radius: $brdzS;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    span {
+      @include font();
+      color: $color-white;
+      padding: 15px;
+      display: inline-block;
+    }
+  }
+
+  &-input {
+    border-right: 1px solid rgba($color-white, .3);
+  }
+
+  &-type {
+    @include flex();
+    padding: 15px;
+
+    li {
+      padding: 0 20px;
+      color: rgba($color-white, .75);
+    }
+  }
+}

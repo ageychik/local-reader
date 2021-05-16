@@ -1,17 +1,22 @@
 // Fonts
-$font-default: sans-serif;
-$open-sans: 'Open Sans', $font-default;
-$raleway: 'Raleway', $font-default;
+$FFamily: 'Open Sans', sans-serif;
+$FZ: 16;
+$FLight: 300;
+$FReg: 400;
+$FSemiB: 600;
+$FBold: 700;
+$FExtra: 800;
 
 // colors
 $color-white: #fff;
 $color-black: #000;
-$color-red: #f00;
+$color-red: #f33;
+$color-red-hover: #f00;
 
 $gray-900: #353535;
-$gray-700: #9da0aa;
-$gray-500: #ccc;
-$gray-300: #e7e7e7;
+$gray-700: #565656;
+$gray-500: #8d8d8d;
+$gray-300: #cdcdcd;
 $gray-100: #f8f8f8;
 
 // URL

@@ -108,9 +108,7 @@ img, svg {
 
 .wrapper{
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @include flex(skip, skip, column);
 }
 
 .container {
