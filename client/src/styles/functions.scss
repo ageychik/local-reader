@@ -10,11 +10,15 @@
   @return $str;
 }
 
-@function condition($if, $val, $default){
+@function condition($if, $val, $default, $unit: none){
   $result: $if;
 
   @if $if == $val {
     $result: $default;
+  }
+
+  @if $unit != none {
+    $result: $result + $unit;
   }
 
   @return $result

@@ -4,7 +4,7 @@
   margin: auto;
 
   &-btn {
-    @include flex();
+    @include flex(center);
     @include hover(){
       background: $color-red-hover;
     }
@@ -16,17 +16,16 @@
     input[type="file"] {
       display: none;
     }
-
-    span {
-      @include font();
-      color: $color-white;
-      padding: 15px;
-      display: inline-block;
-    }
   }
 
   &-input {
     border-right: 1px solid rgba($color-white, .3);
+    span {
+      @include font(skip, skip, 18);
+      color: $color-white;
+      padding: 15px 30px;
+      display: inline-block;
+    }
   }
 
   &-type {
@@ -36,7 +35,14 @@
     li {
       padding: 0 20px;
       color: rgba($color-white, .65);
+      transform: scale(.9);
+      &.active{
+        transform: scale(1);
+        color: $color-white;
+        cursor: default;
+      }
       @include hover(){
+        transform: scale(1);
         color: $color-white;
       }
     }

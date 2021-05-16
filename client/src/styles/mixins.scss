@@ -4,20 +4,25 @@ $tablet: $md + px;
 $mobile: $sm + px;
 
 
-@mixin font($ff: $FFamily, $fw: $FReg, $fz: $FZ, $lh: 1, $color: none){
-  $h: $lh;
-  @each $font-size in $fz{
-    @if $h == $lh {
-      $h: $lh/$font-size;
-    }
+@mixin font($ff: skip, $fw: skip, $fz: skip, $lh: skip, $color: skip){
+  @if $ff != skip{
+    font-family: condition($ff, init, $FFamily);
   }
 
-  @include resp(font-size, $fz...);
-  line-height: $h;
-  font-family: $ff;
-  font-weight: $fw;
-  @if $color != none {
-    color: $color;
+  @if $fw != skip{
+    font-weight: condition($fw, init, $FReg);
+  }
+
+  @if $fz != skip{
+    font-size: condition($fz, init, $FZ, px);
+  }
+
+  @if $lh != skip{
+    line-height: condition($lh, init, 1);
+  }
+
+  @if $color != skip {
+    color: condition($color, init, $color-white);
   }
 }
 
