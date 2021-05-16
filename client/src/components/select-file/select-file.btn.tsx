@@ -2,16 +2,19 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFile, faFolder, faLink} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
-type Props = {
-
-}
+const initialState = Object.freeze({
+    selectType: [
+        {icon: faFolder},
+        {icon: faFile},
+        {icon: faLink},
+    ]
+})
 
 export default class SelectFileBtn extends React.Component {
-    componentDidMount() {
-
-    }
+    state = initialState;
 
     render() {
+        let { selectType } = this.state;
         return (
             <section className="select-file">
                 <label htmlFor="select-files" className="select-file-btn">
@@ -22,9 +25,9 @@ export default class SelectFileBtn extends React.Component {
                         </span>
 
                     <ul className="select-file-type">
-                        <li><FontAwesomeIcon icon={faFolder}/></li>
-                        <li><FontAwesomeIcon icon={faFile}/></li>
-                        <li><FontAwesomeIcon icon={faLink}/></li>
+                        {selectType.map((el, i) => {
+                            return (<li key={i}><FontAwesomeIcon icon={ el.icon }/></li>)
+                        })}
                     </ul>
                 </label>
             </section>
