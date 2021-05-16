@@ -122,3 +122,14 @@ $mobile: $sm + px;
   }
 
 }
+
+@mixin hover($transition: init){
+  /* TODO change to condition for not mobile */
+  @media (min-width: $md + px) {
+    @if $transition != skip{
+      transition: condition($transition, init, all .25s);
+    }
+    cursor: pointer;
+    &:hover{ @content }
+  }
+}
