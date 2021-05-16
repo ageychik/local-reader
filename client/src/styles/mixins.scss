@@ -1,0 +1,106 @@
+$large: $xl + px;
+$desktop: $lg + px;
+$tablet: $md + px;
+$mobile: $sm + px;
+
+
+@mixin font($ff: $raleway, $fw: normal, $fz: 16, $lh: 1, $color: none){
+  $h: $lh;
+  @each $font-size in $fz{
+    @if $h == $lh {
+      $h: $lh/$font-size;
+    }
+  }
+
+  @include resp(font-size, $fz...);
+  line-height: $h;
+  font-family: $ff;
+  font-weight: $fw;
+  @if $color != none {
+    color: $color;
+  }
+}
+
+@mixin resp($prop, $d: none, $m: none){
+  $size: $d;
+  #{ $prop } : value($d, $xl, 'px');
+
+  @media (max-width: $large) {
+    #{ $prop } : value($d, $xl);
+  }
+
+  @if $m != none {
+    $size: $m;
+  }
+
+  @media (max-width: $tablet) {
+    #{ $prop } : value($size, $md);
+  }
+
+  @media (max-width: $mobile) {
+    #{ $prop } : value($size, $sm, 'px');
+  }
+}
+
+@mixin background($color: none, $image: none, $size: none, $position: none){
+  background: {
+    @if $color != none {
+      color: $color;
+    }
+
+    @if $image != none {
+      image: url($url-img + $image);
+    }
+
+    @if $size != none {
+      size: $size;
+    }
+
+    @if $position != none {
+      position: $position;
+    }
+
+  };
+}
+
+@mixin media($prop: mobile) {
+  @if $prop == desktop {
+    @media (max-width: $desktop) { @content }
+  }
+
+  @else if $prop == tablet {
+    @media (max-width: $tablet) { @content }
+  }
+
+  @else if $prop == mobile {
+    @media (max-width: $mobile) { @content }
+  }
+}
+
+@mixin ratio($percent: '100%', $w: 400, $h: 250) {
+  padding-bottom: calc(#{$percent} * (#{$h} / #{$w}));
+}
+
+@mixin grayBG($bg: $gray-100){
+  background: $bg;
+  position: relative;
+  @include resp(padding-top, 80, 40);
+  &:before,
+  &:after{
+    content: "";
+    background-image: url( $url-img + "gray-bg-top.png");
+    background-position: 25%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+  }
+  &:before{
+    top: -60px;
+  }
+  &:after{
+    bottom: -60px;
+    transform: rotate(180deg);
+  }
+}

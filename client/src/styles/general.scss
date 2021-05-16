@@ -1,0 +1,112 @@
+*,
+*::before,
+*::after {
+  outline: none;
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+html {
+  --r-globalnav-height: 44px;
+  --r-globalnav-segmentbar-height: 0;
+  --r-globalnav-viewport-large-min-width: 1024px;
+  --r-globalnav-viewport-large-max-width: 1441px;
+  --r-globalnav-viewport-large-query: (min-width: 1024px);
+  --r-globalnav-viewport-medium-min-width: 768px;
+  --r-globalnav-viewport-medium-max-width: 1023px;
+  --r-globalnav-viewport-medium-query: (max-width: 1023px);
+  --r-globalnav-viewport-small-min-width: 420px;
+  --r-globalnav-viewport-small-max-width: 767px;
+  --r-globalnav-viewport-small-query: (max-width: 767px);
+  --r-globalnav-viewport-xsmall-min-width: 320px;
+  --r-globalnav-viewport-xsmall-max-width: 419px;
+  --r-globalnav-viewport-xsmall-query: (max-width: 419px);
+  --global-nav-main-height: 0px;
+  --global-nav-segmentbar-height: 0px;
+  --global-nav-localeswitcher-height: 0px;
+  --global-nav-collective-height: 0px;
+  &:not(.no--scroll){
+    overflow: visible;
+    body{
+      overflow: visible;
+    }
+  }
+  &.no--scroll {
+    overflow: hidden !important;
+    overflow-y: scroll !important;
+    height: 100% !important;
+    position: relative;
+    body {
+      overflow: hidden !important;
+      height: 100% !important;
+      &::-webkit-scrollbar {
+        width: 0;               /* width of the entire scrollbar */
+      }
+      &::-webkit-scrollbar-track {
+        background: orange;        /* color of the tracking area */
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: blue;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid orange;  /* creates padding around scroll thumb */
+      }
+    }
+  }
+}
+
+body {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: calc(16px + 1vw);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  //@include font($raleway, 800, (96, 24), 128, $color-white);
+  text-align: center;
+}
+
+h2 {
+  //@include font($raleway, 800, (48, 26), 56, $color-black);
+  //@include resp(margin-bottom, 72, 40);
+  text-align: center;
+}
+h3 {
+  //@include font($raleway, 700, (32, 24), 48, $color-black);
+}
+h4 {
+  //@include font($raleway, 800, (16), 32);
+}
+
+p{
+  &.gray-text{
+    //@include font($raleway, 400, (16, 14), 24, $gray-700);
+  }
+  &.person-name{
+    //@include font($open-sans, 600, (18, 16), 24, $color-black);
+  }
+}
+
+a{
+  text-decoration: none;
+}
+
+section{
+  //@include resp(padding, (140, 0, 110), (40, 0, 60));
+}
+
+img, svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+.container {
+  @include resp(padding, (0, 15), (0, 20));
+  max-width: 1200px;
+  margin: auto;
+}

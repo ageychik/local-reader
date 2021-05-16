@@ -1,0 +1,11 @@
+@function value($in, $device, $out: 'vw') {
+  $str: '';
+  @each $size in $in {
+    @if $out == 'vw' {
+      $str: #{ $str + ($size / ($device * 0.01)) + $out + ' ' };
+    } @else {
+      $str: #{ $str + $size + $out + ' ' };
+    }
+  }
+  @return $str;
+}
